@@ -15,18 +15,21 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "code:install": "npm i && npx husky init && node -e \"require('os').platform() === 'win32' ? 'cd exec && git-crypt.exe unlock ../git-crypt-key' : 'cd exec && git-crypt unlock ../git-crypt-key'\"",
+    "code:install": "npm i && npx husky init",
     "code:prettier": "prettier --config .prettierrc --write ./cypress/**/*.{js,ts} --write ./*.{js,ts,mjs}",
     "cypress:open": "npx cypress open --e2e",
     "cypress:run": "npx cypress run --e2e",
-    "test": "",
+    "test": "npm run code:prettier && git add . && npx eslint . --max-warnings=0",
     "prepare": "husky"
   },
   "devDependencies": {
+    "@types/node": "^25.9.3",
+    "@typescript-eslint/parser": "^8.61.1",
     "cypress": "^15.17.0",
     "eslint": "^10.5.0",
     "eslint-plugin-cypress": "^6.4.1",
     "husky": "^9.1.7",
+    "jiti": "^2.7.0",
     "prettier": "^3.8.4",
     "typescript": "^6.0.3"
   }

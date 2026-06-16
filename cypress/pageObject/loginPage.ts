@@ -14,16 +14,16 @@ class LoginPage {
 
 	enterEmail(email: string): void {
 		cy.get(this.selectors.emailInput).clear()
-        if (email) {
-            cy.get(this.selectors.emailInput).type(email)
-        }
+		if (email) {
+			cy.get(this.selectors.emailInput).type(email)
+		}
 	}
 
 	enterPassword(password: string): void {
 		cy.get(this.selectors.passwordInput).clear()
-        if (password) {
-            cy.get(this.selectors.passwordInput).type(password)
-        }
+		if (password) {
+			cy.get(this.selectors.passwordInput).type(password)
+		}
 	}
 
 	submit(): void {

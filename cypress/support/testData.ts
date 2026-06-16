@@ -19,12 +19,12 @@ export const TestData_001 = {
 		email: 'validEmail@example.com',
 		password: 'Password123',
 	},
-    // Error message for all negative cases
-    errorMessage: 'Invalid email or password.',
+	// Error message for all negative cases
+	errorMessage: 'Invalid email or password.',
 }
 
 export const TestData_002 = {
-    originalUserData: {
+	originalUserData: {
 		name: 'Jacek',
 		surname: 'Tester',
 		email: 'test@example.com',
@@ -55,5 +55,5 @@ export const TestData_002 = {
 		notes: 'This is an updated note',
 		isActivated: true,
 		isAdmin: true,
-	}
+	},
 }

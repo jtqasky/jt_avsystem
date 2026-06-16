@@ -35,17 +35,16 @@ class EditUserPage {
 			// Selects
 			if (selectSelectors.indexOf(field) !== -1) {
 				cy.get(`#${field}`).select(String(value))
-			
-			} 
+			}
 			// Checkboxes
 			else if (checkboxSelectors.indexOf(field) !== -1) {
 				if (value == true) {
 					cy.get(`#${field}`).check()
 				}
-		    } 
+			}
 			// Inputs
 			else {
-				cy.get(`#${field}`).clear().type(String(value))	
+				cy.get(`#${field}`).clear().type(String(value))
 			}
 		}
 	}

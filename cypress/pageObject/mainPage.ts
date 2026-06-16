@@ -6,6 +6,10 @@ class MainPage {
 		searchInput: '#search-input',
 		addUserButton: '#add-user-button',
 		logoutButton: '#logout-button',
+		nextPageButton: '#pagination-next-button',
+		previousPageButton: '#pagination-prev-button',
+		massDeleteUsersButton: '#user-table-delete-selected-users-button',
+		itemsPerPageSelect: '#pagination-page-items',
 		// USER
 		userRow: '#table-user-row',
 		userEmailRow: '#user-row-email',
@@ -15,7 +19,8 @@ class MainPage {
 		deleteUserModalButton: '#delete-modal-delete-button',
 		deactivateUserButton: '#table-user-row-deactivate-button',
 		activateUserButton: '#table-user-row-activate-button',
-		activationUserStatus: '#user-row-status > span'
+		activationUserStatus: '#user-row-status > span',
+		userMassEditCheckbox: '#user-row-checkbox > input[type="checkbox"]',
 	}
 
 	visit(): void {
@@ -23,9 +28,10 @@ class MainPage {
 	}
 
 	/* GENERAL */
+
 	wait(): void {
 		cy.intercept('GET', '**/api/users').as('API_users_200')
-		cy.wait(['@API_users_200'])
+		cy.wait('@API_users_200')
 	}
 
 	/* MENU */
@@ -40,6 +46,25 @@ class MainPage {
 
 	clickLogout(): void {
 		cy.get(this.selectors.logoutButton).click()
+	}
+
+	clickNextPageButton(): void {
+		cy.get(this.selectors.nextPageButton).click()
+	}
+
+	clickPreviousPageButton(): void {
+		cy.get(this.selectors.previousPageButton).click()
+	}
+
+	selectNumberOfItemsOnPage(numberOfItems: String): void {
+		cy.intercept('GET', '**/api/users').as('API_users_200')
+		cy.get(this.selectors.itemsPerPageSelect).select(String(numberOfItems))
+		cy.wait('@API_users_200')
+	}
+
+	clickMassDeleteUsers(): void {
+		cy.get(this.selectors.massDeleteUsersButton).click()
+		cy.get(this.selectors.deleteUserModalButton).click()
 	}
 
 	/* USER INTERACTION */
@@ -73,6 +98,10 @@ class MainPage {
 	clickActivateUser(userMail: string): void {
 		cy.contains(this.selectors.userRow, userMail).should('exist').find(this.selectors.deactivateUserButton).should('have.text', 'Activate').click()
 		cy.get(this.selectors.activationUserStatus).should('have.class', 'text-success')
+	}
+
+	clickSelectUserToMassEdit(userMail: string): void {
+		cy.contains(this.selectors.userRow, userMail).should('exist').find(this.selectors.userMassEditCheckbox).check()
 	}
 }
 
