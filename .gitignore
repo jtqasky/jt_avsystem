@@ -1,0 +1,6 @@
+# Ignore files and directories that should not be tracked by Git
+/cypress/downloads
+/cypress/screenshots
+/cypress/videos
+/git-crypt-key
+/node_modules

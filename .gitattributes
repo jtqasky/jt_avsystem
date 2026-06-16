@@ -1,0 +1,5 @@
+# Ignore all differences in line endings
+*        -crlf
+# git-crypt filters for encrypted files
+cypress.env.json filter=git-crypt diff=git-crypt
+git-crypt-key.key filter=git-crypt diff=git-crypt

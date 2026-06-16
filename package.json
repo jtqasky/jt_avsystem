@@ -1,0 +1,33 @@
+{
+  "name": "jt_avsystem",
+  "version": "1.0.0",
+  "description": "AVSystem Recruitment Task (Cypress / TS)",
+  "homepage": "https://github.com/jtqasky/jt_avsystem#readme",
+  "bugs": {
+    "url": "https://github.com/jtqasky/jt_avsystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtqasky/jt_avsystem.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "code:install": "npm i && npx husky init && node -e \"require('os').platform() === 'win32' ? 'cd exec && git-crypt.exe unlock ../git-crypt-key' : 'cd exec && git-crypt unlock ../git-crypt-key'\"",
+    "code:prettier": "prettier --config .prettierrc --write ./cypress/**/*.{js,ts} --write ./*.{js,ts,mjs}",
+    "cypress:open": "npx cypress open --e2e",
+    "cypress:run": "npx cypress run --e2e",
+    "test": "",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "cypress": "^15.17.0",
+    "eslint": "^10.5.0",
+    "eslint-plugin-cypress": "^6.4.1",
+    "husky": "^9.1.7",
+    "prettier": "^3.8.4",
+    "typescript": "^6.0.3"
+  }
+}
